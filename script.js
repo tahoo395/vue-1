@@ -1,22 +1,25 @@
-let like= new Vue({
+let like = new Vue({
+    //get the element by el
     el: ".elements",
     data: {
-        likes: [],
-        views:[],
+        //initial values of likes and views
+        likes: 0,
+        views:0,
     },
     methods: {
         addLikes() {
-            this.likes.push(1)
-            this.views.push(1)
-            // document.querySelector(".progress-bar").style=like.progress()
+            //add 1 to likes and views 
+            this.likes+=1
+            this.views+=1
         },
         unlike() {
-            this.likes.pop()
-            if (this.likes.length > 0) { this.views.push(1) }
-            // document.querySelector(".progress-bar").style=like.progress()
+            //decrease 1 from likes and add 1 to views
+            if(this.likes>0){this.likes-=1}
+            if (this.likes > 0) { this.views+=1 }
         },
         progress() {
-            width=Math.round(this.likes.length/this.views.length*100)
+            //progress bar progressing
+            width=Math.round(this.likes/this.views *100)
             return `<style>.progress-bar{width: ${width}% ;}</style>`
         }
     },
